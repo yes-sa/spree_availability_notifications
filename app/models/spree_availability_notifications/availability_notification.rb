@@ -3,7 +3,7 @@ module SpreeAvailabilityNotifications
     EMAIL_REGEXP = /\A[^@\s]+@[^@\s]+\.[^@\s]+\z/
     after_create :sync_notification
     belongs_to :variant, class_name: 'Spree::Variant'
-    
+
     validates :variant, presence: true
     validates :receiver_email,
               presence: true,
