@@ -1,4 +1,3 @@
-# app/controllers/spree/api/v3/availability_notifications_controller.rb
 # frozen_string_literal: true
 
 module Spree
