@@ -3,7 +3,7 @@ module SpreeAvailabilityNotifications
     module VariantDecorator
       def self.prepended(base)
         base.has_many :availability_notifications,
-                      class_name: "SpreeAvailabilityNotifications::AvailabilityNotification",
+                      class_name: 'SpreeAvailabilityNotifications::AvailabilityNotification',
                       foreign_key: :variant_id,
                       dependent: :destroy
       end
@@ -11,6 +11,6 @@ module SpreeAvailabilityNotifications
   end
 end
 
-if ::Spree::Variant.included_modules.exclude?(SpreeAvailabilityNotifications::Spree::VariantDecorator)
-  ::Spree::Variant.prepend SpreeAvailabilityNotifications::Spree::VariantDecorator
+if Spree::Variant.included_modules.exclude?(SpreeAvailabilityNotifications::Spree::VariantDecorator)
+  Spree::Variant.prepend SpreeAvailabilityNotifications::Spree::VariantDecorator
 end

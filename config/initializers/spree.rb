@@ -1,8 +1,8 @@
 # Uncomment lines below to add your own custom business logic
 # such as promotions, shipping methods, etc.
 Rails.application.config.to_prepare do
-  unless ::Spree::Variant.ancestors.include?(SpreeAvailabilityNotifications::Spree::VariantDecorator)
-    ::Spree::Variant.prepend SpreeAvailabilityNotifications::Spree::VariantDecorator
+  unless Spree::Variant.ancestors.include?(SpreeAvailabilityNotifications::Spree::VariantDecorator)
+    Spree::Variant.prepend SpreeAvailabilityNotifications::Spree::VariantDecorator
   end
   # Spree.shipping_methods << Spree::ShippingMethods::SuperExpensiveNotVeryFastShipping
   # Spree.payment_methods << Spree::PaymentMethods::VerySafeAndReliablePaymentMethod

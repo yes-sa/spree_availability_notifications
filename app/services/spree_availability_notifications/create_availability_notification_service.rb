@@ -27,7 +27,11 @@ module SpreeAvailabilityNotifications
     attr_reader :email, :variant_sku, :variant_options
 
     def variant
-      @variant ||= ::Spree::Variant.find_by(sku: variant_sku)
+      if defined?(@variant)
+        @variant
+      else
+        @variant = ::Spree::Variant.find_by(sku: variant_sku)
+      end
 
       return @variant if @variant
 

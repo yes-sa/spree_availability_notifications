@@ -13,15 +13,15 @@ module Spree
           render json: {
             errors: [
               {
-                code: "variant_not_found",
-                message: e.message,
+                code: 'variant_not_found',
+                message: e.message
               }
             ]
-          }, status: :unprocessable_entity
+          }, status: :unprocessable_content
         rescue ::ActiveRecord::RecordInvalid => e
           capture_exception(e)
           render json: { errors: e.record.errors.to_hash },
-                 status: :unprocessable_entity
+                 status: :unprocessable_content
         end
 
         private
@@ -35,12 +35,14 @@ module Spree
         end
 
         def availability_notification_params
-          params.require(:availability_notification).permit(
-            :email,
-            variant: [
-              :sku,
-              { options: {} }
-            ]
+          params.expect(
+            availability_notification: [:email,
+                                        {
+                                          variant: [
+                                            :sku,
+                                            { options: {} }
+                                          ]
+                                        }]
           )
         end
 
