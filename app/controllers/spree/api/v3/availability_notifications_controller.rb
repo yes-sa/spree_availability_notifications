@@ -15,7 +15,6 @@ module Spree
               {
                 code: "variant_not_found",
                 message: e.message,
-                variant_sku: e.sku
               }
             ]
           }, status: :unprocessable_entity

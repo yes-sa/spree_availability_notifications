@@ -33,9 +33,9 @@ module SpreeAvailabilityNotifications
 
       raise CreateAvailabilityNotificationServiceError,
             I18n.t(
-              'spree.availability_notifications.errors.variant_not_found'
-            ),
-            sku: @variant_sku
+              'spree.availability_notifications.errors.variant_not_found',
+              sku: @variant_sku
+            )
     end
   end
 end

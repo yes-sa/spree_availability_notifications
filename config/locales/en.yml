@@ -3,5 +3,5 @@ en:
   spree:
     availability_notifications:
       errors:
-        variant_not_found: Variant not found
         invalid_email: Is not a valid email address
+        variant_not_found: Variant not found  %{sku}

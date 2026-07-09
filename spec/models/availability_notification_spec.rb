@@ -70,7 +70,7 @@ RSpec.describe SpreeAvailabilityNotifications::AvailabilityNotification, type: :
           it "is not valid" do
             expect(availability_notification).not_to be_valid
             expect(availability_notification.errors[:receiver_email]).to include(
-                                                                           "is not a valid email address"
+                                                                           "Is not a valid email address"
                                                                          )
           end
         end
