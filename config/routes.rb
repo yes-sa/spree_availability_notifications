@@ -5,4 +5,8 @@ Spree::Core::Engine.add_routes do
       post '/availability_notifications', to: 'availability_notifications#create', as: :availability_notifications
     end
   end
+
+  namespace :admin do
+    resources :availability_notifications
+  end
 end

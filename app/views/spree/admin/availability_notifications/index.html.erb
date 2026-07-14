@@ -1,0 +1,68 @@
+<% content_for :page_title do %>
+  <%= I18n.t('spree.availability_notifications.views.title') %>
+<% end %>
+
+<% content_for :page_actions do %>
+  <%= form_with url: admin_availability_notifications_path,
+                method: :get,
+                local: true,
+                class: 'd-inline-flex align-items-center gap-2' do %>
+
+  <% end %>
+<% end %>
+<div class="d-flex flex-wrap gap-2 align-items-center mb-4">
+  <%= link_to "All records",
+              spree.admin_availability_notifications_path(range: "all"),
+              class: "btn #{@selected_range == "all" ? "btn-primary" : "btn-outline-primary"}" %>
+
+  <%= link_to "Last Day",
+              spree.admin_availability_notifications_path(range: "day"),
+              class: "btn #{@selected_range == "day" ? "btn-primary" : "btn-outline-primary"}" %>
+
+  <%= link_to "Last Week",
+              spree.admin_availability_notifications_path(range: "week"),
+              class: "btn #{@selected_range == "week" ? "btn-primary" : "btn-outline-primary"}" %>
+
+  <%= link_to "Last Month",
+              spree.admin_availability_notifications_path(range: "month"),
+              class: "btn #{@selected_range == "month" ? "btn-primary" : "btn-outline-primary"}" %>
+
+</div>
+
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th><%=  I18n.t('spree.availability_notifications.views.headers.variant_id') %></th>
+    <th><%=  I18n.t('spree.availability_notifications.views.headers.variant_sku') %></th>
+    <th><%=  I18n.t('spree.availability_notifications.views.headers.variant_options') %></th>
+    <th><%=  I18n.t('spree.availability_notifications.views.headers.sum') %></th>
+    <th><%=  I18n.t('spree.availability_notifications.views.headers.last_created_at') %></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @availability_notifications.each do |notification| %>
+    <tr
+      style="cursor: pointer;"
+      onclick="window.location='<%= spree.admin_availability_notification_path(
+    notification.variant_id,
+    variant_options: notification.variant_options.to_json
+  ) %>'"
+    >
+      <td><%= notification.variant_id %></td>
+      <td><%= notification.variant_sku %></td>
+      <td>
+        <% notification.variant_options.each do |key, value| %>
+          <strong><%= key %> </strong> <%= value %> <br>
+        <% end %>
+      </td>
+      <td><%= notification.notifications_count %></td>
+      <td title="<%= l(notification.last_created_at, format: :long) %>">
+        <%= time_ago_in_words(notification.last_created_at) %> ago
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<%= render 'spree/admin/shared/index_table_options', collection: @availability_notifications %>

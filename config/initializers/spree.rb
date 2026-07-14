@@ -24,3 +24,13 @@ Rails.application.config.to_prepare do
   # Spree.exports << Spree::Exports::Payments
   # Spree.reports << Spree::Reports::MassivelyOvercomplexReportForCfo
 end
+
+Rails.application.config.after_initialize do
+  Spree.storefront.partials.head << 'spree_availability_notifications/head'
+  settings_nav = Spree.admin.navigation.settings
+  settings_nav.add :availability_notifications_reports,
+                   label: :availability_notifications_reports,
+                   url: -> { spree.admin_availability_notifications_path },
+                   icon: 'arrow-loop-right'
+end
+
