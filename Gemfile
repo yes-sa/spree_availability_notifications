@@ -2,9 +2,6 @@ source 'https://rubygems.org'
 
 gem 'rails-controller-testing'
 gem 'rails', '~> 8.0.0'
-spree_opts = '< 6.0'
-gem 'spree', spree_opts
-gem 'spree_admin', spree_opts
 
 gem 'spree_dev_tools', '>= 0.6.0.rc1'
 

@@ -6,16 +6,16 @@ pl:
         invalid_email: Is not a valid email address
         variant_not_found: Variant not found  %{sku}
       views:
-        title: Availability Notifications
-        not_synced: Not Synced
         headers:
+          created_at: Created At
           id: Id
+          last_created_at: Last Notification
+          receiver_email: Receiver Email
+          sum: Notifications Count
+          synced_at: Synced At
+          updated_at: Updated At
           variant_id: Variant Id
           variant_options: Variant Options
           variant_sku: Variant Sku
-          sum: Notifications Count
-          receiver_email: Receiver Email
-          created_at: Created At
-          synced_at: Synced At
-          updated_at: Updated At
-          last_created_at: Last Notification
+        not_synced: Not Synced
+        title: Availability Notifications
