@@ -1,12 +1,17 @@
 # Uncomment lines below to add your own custom business logic
 # such as promotions, shipping methods, etc.
-Rails.application.config do |config|
-  config.to_prepare do
-    unless Spree::Variant.ancestors.include?(SpreeAvailabilityNotifications::Spree::VariantDecorator)
-      Spree::Variant.prepend SpreeAvailabilityNotifications::Spree::VariantDecorator
-    end
-  end
+Rails.application.config.after_initialize do |config|
+    Spree::Variant.prepend SpreeAvailabilityNotifications::Spree::VariantDecorator
 
+    unless Rails.env.test?
+        Spree.storefront.partials.head << 'spree_availability_notifications/head'
+        settings_nav = Spree.admin.navigation.settings
+        settings_nav.add :availability_notifications_reports,
+                         label: :availability_notifications_reports,
+                         url: -> { spree.admin_availability_notifications_path },
+                         icon: 'arrow-loop-right'
+    end
+    
   # Spree.shipping_methods << Spree::ShippingMethods::SuperExpensiveNotVeryFastShipping
   # Spree.payment_methods << Spree::PaymentMethods::VerySafeAndReliablePaymentMethod
 
@@ -26,15 +31,4 @@ Rails.application.config do |config|
 
   # Spree.exports << Spree::Exports::Payments
   # Spree.reports << Spree::Reports::MassivelyOvercomplexReportForCfo
-end
-
-Rails.application.config.after_initialize do
-  unless Rails.env.test?
-    Spree.storefront.partials.head << 'spree_availability_notifications/head'
-    settings_nav = Spree.admin.navigation.settings
-    settings_nav.add :availability_notifications_reports,
-                     label: :availability_notifications_reports,
-                     url: -> { spree.admin_availability_notifications_path },
-                     icon: 'arrow-loop-right'
-  end
 end
