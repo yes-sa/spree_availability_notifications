@@ -26,26 +26,15 @@ Rails.application.config do |config|
 
   # Spree.exports << Spree::Exports::Payments
   # Spree.reports << Spree::Reports::MassivelyOvercomplexReportForCfo
-  config.after_initialize do
-    if Spree.respond_to?(:storefront)
-      partial = "spree_availability_notifications/head"
-
-      unless Spree.storefront.partials.head.include?(partial)
-        Spree.storefront.partials.head << partial
-      end
-    end
-
-    if Spree.respond_to?(:admin)
-      settings_nav = Spree.admin.navigation.settings
-
-      settings_nav.add(
-        :availability_notifications_reports,
-        label: :availability_notifications_reports,
-        url: -> { spree.admin_availability_notifications_path },
-        icon: "arrow-loop-right"
-      )
-    end
-  end
-
 end
 
+Rails.application.config.after_initialize do
+  unless Rails.env.test?
+    Spree.storefront.partials.head << 'spree_availability_notifications/head'
+    settings_nav = Spree.admin.navigation.settings
+    settings_nav.add :availability_notifications_reports,
+                     label: :availability_notifications_reports,
+                     url: -> { spree.admin_availability_notifications_path },
+                     icon: 'arrow-loop-right'
+  end
+end
