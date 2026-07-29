@@ -1,0 +1,55 @@
+<% content_for :page_title do %>
+  Availability notifications for <%= @variant.sku %>
+<% end %>
+
+<div class="mb-3">
+  <%= link_to "Back",
+              spree.admin_availability_notifications_path,
+              class: "btn btn-light" %>
+</div>
+
+<div class="card mb-4">
+  <div class="card-body">
+    <strong>Variant ID:</strong> <%= @variant.id %><br>
+    <strong>SKU:</strong> <%= @variant.sku %><br>
+    <strong>Notifications:</strong> <%= @availability_notifications.size %> <br>
+    <% @availability_notifications.first.variant_options.each do |key, value| %>
+      <strong><%= key %> </strong> <%= value %> <br>
+  <% end %>
+
+      </div>
+</div>
+
+<div class="card">
+  <div class="table-responsive">
+    <table class="table mb-0">
+      <thead>
+      <tr>
+        <th><%= I18n.t('spree.availability_notifications.views.headers.id') %></th>
+        <th><%= I18n.t('spree.availability_notifications.views.headers.receiver_email') %></th>
+        <th><%= I18n.t('spree.availability_notifications.views.headers.synced_at') %></th>
+        <th><%= I18n.t('spree.availability_notifications.views.headers.created_at') %></th>
+        <th><%= I18n.t('spree.availability_notifications.views.headers.updated_at') %></th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <% @availability_notifications.each do |notification| %>
+        <tr>
+          <td><%= notification.id %></td>
+          <td><%= notification.receiver_email %></td>
+          <td>
+            <% if notification.synced_at.present? %>
+              <%= l(notification.synced_at, format: :long) %>
+            <% else %>
+              <span class="text-muted"><%= I18n.t('spree.availability_notifications.views.not_synced') %></span>
+            <% end %>
+          </td>
+          <td><%= l(notification.created_at, format: :long) %></td>
+          <td><%= l(notification.updated_at, format: :long) %></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

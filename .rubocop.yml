@@ -2,15 +2,14 @@ plugins:
   - rubocop-rails
 
 AllCops:
+  NewCops: enable
   DisplayCopNames: true
   TargetRubyVersion: 3.2
-  Include:
-    - '**/Gemfile'
-    - '**/Rakefile'
-    - '**/Appraisals'
+
   Exclude:
     - 'spec/dummy/**/*'
     - 'lib/generators/**/*'
+    - '*'
 
 Layout/LineLength:
   Max: 150
