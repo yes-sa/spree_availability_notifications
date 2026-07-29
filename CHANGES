@@ -1,0 +1,16 @@
+Version 0.1.0
+ - Add bump version file
+ - Merge pull request #1 from yes-sa/VS-155
+ - Merge pull request #2 from yes-sa/VS-151
+ - Fix initializer
+ - Return availability_notifications report tab
+ - Fix tests
+ - Add availability notifications report page in admin panel
+ - Throw away my-sql ci tests
+ - Add missing validation
+ - styles
+ - Small fixes, unit tests
+ - styles
+ - Create availability_notification model, controller, service, migration, decorator for variant. All base scope
+ - (late) Init commit
+
