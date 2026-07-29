@@ -7,6 +7,6 @@ module SpreeAvailabilityNotifications
   mattr_accessor :queue
 
   def self.queue
-    @@queue ||= Spree.queues.default
+    @@queue ||= ::Spree.queues.default
   end
 end

@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe 'Zeitwerk' do
   it 'eager loads all files' do
