@@ -1,8 +1,9 @@
 module SpreeAvailabilityNotifications
   class AvailabilityNotification < ::Spree.base_class
     EMAIL_REGEXP = /\A[^@\s]+@[^@\s]+\.[^@\s]+\z/
-    after_create :sync_notification
     belongs_to :variant, class_name: 'Spree::Variant'
+
+    scope :not_synced, -> { where(synced_at: nil) }
 
     validates :variant, presence: true
     validates :receiver_email,
@@ -11,8 +12,6 @@ module SpreeAvailabilityNotifications
                 with: EMAIL_REGEXP,
                 message: I18n.t('spree.availability_notifications.errors.invalid_email')
               }
-
-    private
 
     # Define if any sync with an outer system is needed
     def sync_notification
