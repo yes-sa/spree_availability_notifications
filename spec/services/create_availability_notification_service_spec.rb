@@ -11,7 +11,15 @@ RSpec.describe SpreeAvailabilityNotifications::CreateAvailabilityNotificationSer
     end
 
     let(:email) { 'customer@example.com' }
-    let(:variant) { create(:variant, sku: 'SKU-123') }
+    let(:size_option) do
+      create(:option_value, name: 'M', presentation: 'M',
+                            option_type: create(:option_type, name: 'size', presentation: 'Size'))
+    end
+    let(:color_option) do
+      create(:option_value, name: 'Black', presentation: 'Black',
+                            option_type: create(:option_type, name: 'color', presentation: 'Color'))
+    end
+    let(:variant) { create(:variant, sku: 'SKU-123', option_values: [size_option, color_option]) }
     let(:variant_sku) { variant.sku }
     let(:variant_options) { { 'size' => 'M', 'color' => 'Black' } }
 
@@ -105,7 +113,11 @@ RSpec.describe SpreeAvailabilityNotifications::CreateAvailabilityNotificationSer
     end
 
     let(:email) { 'customer@example.com' }
-    let(:variant) { create(:variant, sku: 'SKU-456') }
+    let(:size_option) do
+      create(:option_value, name: 'L', presentation: 'L',
+                            option_type: create(:option_type, name: 'size', presentation: 'Size'))
+    end
+    let(:variant) { create(:variant, sku: 'SKU-456', option_values: [size_option]) }
     let(:variant_sku) { variant.sku }
     let(:variant_options) { { 'size' => 'L' } }
 
