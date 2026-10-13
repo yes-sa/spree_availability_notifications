@@ -18,13 +18,15 @@ pl:
           variant_options: Variant Options
           variant_sku: Variant Sku
         not_synced: Not Synced
-        title: Availability Notifications
         panel:
-          product_unavailable: "Produkt niedostępny"
-          sign_up_notice: "Zapisz się na listę, a powiadomimy Cię, gdy produkt będzie ponownie dostępny."
-          notify_me: "Powiadom mnie"
-          email_saved: "Zapisaliśmy Twój adres e-mail"
-          request_retention_notice: "Twoje zapytanie będzie zapisane przez 3 miesiące. Jeśli produkt pojawi się w sprzedaży, otrzymasz od nas e-mail."
-          email_label: "Adres e-mail"
-          email_placeholder: "Wpisz adres e-mail"
-          continue_shopping: "Kontynuuj zakupy"
+          continue_shopping: Kontynuuj zakupy
+          email_label: Adres e-mail
+          email_placeholder: Wpisz adres e-mail
+          email_saved: Zapisaliśmy Twój adres e-mail
+          notify_me: Powiadom mnie
+          product_unavailable: Produkt niedostępny
+          request_retention_notice: Twoje zapytanie będzie zapisane przez 3 miesiące.
+            Jeśli produkt pojawi się w sprzedaży, otrzymasz od nas e-mail.
+          sign_up_notice: Zapisz się na listę, a powiadomimy Cię, gdy produkt będzie
+            ponownie dostępny.
+        title: Availability Notifications
