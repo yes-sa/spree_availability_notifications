@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails-controller-testing'
 gem 'rails', '~> 8.0.0'
+gem 'json', '< 3'
 
 gem 'spree_dev_tools', '>= 0.6.0.rc1'
 
