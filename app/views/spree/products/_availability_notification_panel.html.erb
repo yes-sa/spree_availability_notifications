@@ -12,11 +12,11 @@
     class="availability-notification-sidepanel"
     data-availability-notification-target="panel">
 
-    <h3 slot="title"><%= Spree.t(:product_unavailable) %></h3>
+    <h3 slot="title"><%= Spree.t('availability_notifications.views.panel.product_unavailable') %></h3>
 
     <div data-availability-notification-target="formContent">
       <yes-info-block>
-        <%= Spree.t(:sign_up_notice) %>
+        <%= Spree.t('availability_notifications.views.panel.sign_up_notice') %>
       </yes-info-block>
 
       <form
@@ -43,7 +43,7 @@
           <label
             class="availability-notification-label"
             for="availability-notification-email-<%= product.id %>">
-            <%= Spree.t('storefront.account_address.email_label') %>
+            <%= Spree.t('availability_notifications.views.panel.email_label') %>
           </label>
 
           <input
@@ -51,7 +51,7 @@
             type="email"
             name="availability_notification[email]"
             class="input-text availability-notification-input"
-            placeholder="<%= Spree.t('cart_checkout.delivery_address.email_placeholder') %>"
+            placeholder="<%= Spree.t('availability_notifications.views.panel.email_placeholder') %>"
             autocomplete="email"
             required
             data-availability-notification-target="emailInput">
@@ -67,7 +67,7 @@
           type="submit"
           class="button availability-notification-submit yes-button"
           data-availability-notification-target="submitButton">
-          <%= Spree.t(:notify_me) %>
+          <%= Spree.t('availability_notifications.views.panel.notify_me') %>
         </button>
       </form>
     </div>
@@ -77,16 +77,16 @@
       data-availability-notification-target="successContent"
       hidden>
       <yes-info-block>
-        <strong><%= Spree.t(:email_saved) %></strong>
+        <strong><%= Spree.t('availability_notifications.views.panel.email_saved') %></strong>
         <br>
-        <%= Spree.t(:request_retention_notice) %>
+        <%= Spree.t('availability_notifications.views.panel.request_retention_notice') %>
       </yes-info-block>
 
       <button
         type="button"
         class="button availability-notification-close yes-button"
         data-action="availability-notification#close">
-        <%= Spree.t(:continue_shopping) %>
+        <%= Spree.t('availability_notifications.views.panel.continue_shopping') %>
       </button>
     </div>
   </yes-sidepanel>
