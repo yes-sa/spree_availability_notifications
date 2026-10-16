@@ -18,4 +18,15 @@ en:
           variant_options: Variant Options
           variant_sku: Variant Sku
         not_synced: Not Synced
+        panel:
+          continue_shopping: Continue shopping
+          email_label: Email address
+          email_placeholder: Enter your email address
+          email_saved: Your email address has been saved
+          notify_me: Notify me
+          product_unavailable: Product unavailable
+          request_retention_notice: Your request will be stored for 3 months. If the
+            product becomes available, we’ll send you an email.
+          sign_up_notice: Join the list and we’ll notify you when the product is available
+            again.
         title: Availability Notifications
